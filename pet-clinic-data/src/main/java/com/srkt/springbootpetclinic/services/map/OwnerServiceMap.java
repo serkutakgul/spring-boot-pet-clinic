@@ -16,14 +16,14 @@ public class OwnerServiceMap extends AbstractMapServices<Owner,Long> implements 
         return findById(id);
     }
 
+
     @Override
     public void deleteById(Long id) {
         super.deleteById(id);
     }
-
     @Override
     public void delete(Owner object) {
-    super.delete(object);
+        super.delete(object);
     }
 
     @Override
