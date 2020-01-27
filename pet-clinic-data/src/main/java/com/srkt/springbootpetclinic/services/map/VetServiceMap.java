@@ -12,6 +12,11 @@ public class VetServiceMap extends AbstractMapServices<Vet,Long> implements Crud
     }
 
     @Override
+    public Vet findById(Long id) {
+        return super.findById(id);
+    }
+
+    @Override
     public void deleteById(Long id) {
         super.deleteById(id);
 
@@ -28,8 +33,5 @@ public class VetServiceMap extends AbstractMapServices<Vet,Long> implements Crud
         return super.save(object.getId(),object);
     }
 
-    @Override
-    public Vet findById(Long id) {
-        return super.findById(id);
-    }
+
 }

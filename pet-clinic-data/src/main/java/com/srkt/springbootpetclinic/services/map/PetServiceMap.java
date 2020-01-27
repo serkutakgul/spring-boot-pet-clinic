@@ -13,6 +13,11 @@ public class PetServiceMap extends AbstractMapServices<Pet,Long> implements Crud
     }
 
     @Override
+    public Pet findById(Long id) {
+        return super.findById(id);
+    }
+
+    @Override
     public void deleteById(Long id) {
         super.deleteById(id);
 
@@ -24,13 +29,11 @@ public class PetServiceMap extends AbstractMapServices<Pet,Long> implements Crud
 
     }
 
+
     @Override
     public Pet save(Pet object) {
         return super.save(object.getId(),object);
     }
 
-    @Override
-    public Pet findById(Long id) {
-        return super.findById(id);
-    }
+
 }
