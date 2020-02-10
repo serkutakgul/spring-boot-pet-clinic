@@ -2,14 +2,14 @@ package com.srkt.springbootpetclinic.services.map;
 
 import com.srkt.springbootpetclinic.model.Visit;
 import com.srkt.springbootpetclinic.services.VisitService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class VisitMapService extends AbstractMapServices<Visit,Long> implements VisitService {
-
-
+@Profile({"default", "map"})
+public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
 
     @Override
     public Set<Visit> findAll() {
@@ -17,30 +17,30 @@ public class VisitMapService extends AbstractMapServices<Visit,Long> implements 
     }
 
     @Override
-    public void deleteById(Long id) {
-        super.findById(id);
+    public Visit findById(Long id) {
+        return super.findById(id);
+    }
 
+    @Override
+    public Visit save(Visit visit) {
+
+
+
+       if(visit.getPet() == null || visit.getPet().getOwner() == null || visit.getPet().getId() == null
+                || visit.getPet().getOwner().getId() == null) {
+           throw new RuntimeException("Invalid Visit");
+
+       }
+        return super.save(visit);
     }
 
     @Override
     public void delete(Visit object) {
         super.delete(object);
-
     }
 
     @Override
-    public Visit save(Visit visit) {
-        if(visit.getPet()==null
-                || visit.getPet().getOwner()==null
-                || visit.getPet().getId()==null
-                || visit.getPet().getOwner().getId()==null){
-            throw new RuntimeException("Invalid Visit");
-        }
-        return super.save(visit);
-    }
-
-    @Override
-    public Visit findById(Long id) {
-        return super.findById(id);
+    public void deleteById(Long id) {
+        super.deleteById(id);
     }
 }
