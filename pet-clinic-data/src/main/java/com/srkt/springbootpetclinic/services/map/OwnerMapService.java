@@ -28,7 +28,7 @@ public class OwnerMapService extends AbstractMapService<Owner,Long> implements O
 
     @Override
     public Owner findById(Long id) {
-        return findById(id);
+        return super.findById(id);
     }
 
 
